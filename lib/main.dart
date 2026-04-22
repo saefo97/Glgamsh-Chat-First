@@ -40,7 +40,7 @@ class LogInScreen extends StatelessWidget {
                       blurRadius: 4,
                     ),
                   ],
-                  gradient:kDarkGradient,
+                  gradient: kDarkGradient,
                   borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(360),
                   ),
@@ -58,7 +58,7 @@ class LogInScreen extends StatelessWidget {
                     blurRadius: 10,
                   ),
                 ],
-                gradient:kLightGradient,
+                gradient: kLightGradient,
 
                 borderRadius: BorderRadius.only(
                   bottomRight: Radius.circular(360),
@@ -80,8 +80,7 @@ class LogInScreen extends StatelessWidget {
                       blurRadius: 4,
                     ),
                   ],
-                  gradient:kDarkGradient,
-
+                  gradient: kDarkGradient,
                 ),
               ),
             ),
@@ -99,7 +98,7 @@ class LogInScreen extends StatelessWidget {
                       blurRadius: 10,
                     ),
                   ],
-                  gradient:kLightGradient,
+                  gradient: kLightGradient,
 
                   shape: BoxShape.circle,
                 ),
@@ -117,9 +116,31 @@ class LogInScreen extends StatelessWidget {
                       style: TextStyle(fontSize: 30, color: kMainColor),
                     ),
                     SizedBox(height: 16.0),
-                    CustomTextFormField(label: "Email",),
+                    CustomTextFormField(label: "Email"),
                     SizedBox(height: 8.0),
-                    CustomTextFormField(label: "Password",),
+                    CustomTextFormField(label: "Password"),
+                    SizedBox(height: 8.0),
+
+                    Container(
+                      width: 150,
+                      decoration: BoxDecoration(
+                        gradient: kLightGradient,
+                        borderRadius: BorderRadiusGeometry.circular(100),
+                      ),
+                      child: MaterialButton(
+                        onPressed: () {},
+                        //   color: Colors.transparent,
+                        //  elevation: 0,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadiusGeometry.circular(100),
+                        ),
+                        height: 65,
+                        child: Text(
+                          "Log In",
+                          style: TextStyle(fontSize: 28.0, color: Colors.white),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),
