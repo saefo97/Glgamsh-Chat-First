@@ -1,3 +1,4 @@
+import 'package:chat_first/screens/chat_screen.dart';
 import 'package:chat_first/screens/forget_password_screen.dart';
 import 'package:flutter/material.dart';
 import '../components/background_decoration.dart';
@@ -48,6 +49,9 @@ class LogInScreen extends StatelessWidget {
             ),
             Hero(
                 tag: "logIn",child: CustomButton(title: "Log In",
+            onPressed: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>ChatScreen()));
+            },
             width: 200,
 
             )),
