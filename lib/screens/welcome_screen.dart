@@ -1,10 +1,9 @@
-import 'package:chat_first/background_decoration.dart';
-import 'package:chat_first/custom_button.dart';
-import 'package:chat_first/log_in_screen.dart';
-import 'package:chat_first/sign_up_screen.dart';
+import 'package:chat_first/components/background_decoration.dart';
+import 'package:chat_first/screens/log_in_screen.dart';
+import 'package:chat_first/screens/sign_up_screen.dart';
 import 'package:flutter/material.dart';
-
-import 'constants.dart';
+import '../components/custom_button.dart';
+import '../constants.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});

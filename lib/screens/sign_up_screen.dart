@@ -1,11 +1,9 @@
-
-
 import 'package:flutter/material.dart';
+import '../components/background_decoration.dart';
+import '../components/custom_button.dart';
+import '../components/custom_text_form_field.dart';
+import '../constants.dart';
 
-import 'background_decoration.dart';
-import 'constants.dart';
-import 'custom_button.dart';
-import 'custom_text_form_field.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
@@ -36,9 +34,9 @@ class SignUpScreen extends StatelessWidget {
             SizedBox(height: 16.0),
             CustomTextFormField(label: "Email"),
             SizedBox(height: 8.0),
-            CustomTextFormField(label: "Password"),
+            CustomTextFormField(label: "Password",isPassword: true,),
             SizedBox(height: 8.0),
-            CustomTextFormField(label: "Confirm Password"),
+            CustomTextFormField(label: "Confirm Password",isPassword: true,),
             SizedBox(height: 8.0),
             Hero(
                 tag: "signUp",child: CustomButton(title: "Sign Up",

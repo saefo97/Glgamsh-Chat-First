@@ -1,11 +1,9 @@
-
-
+import 'package:chat_first/screens/forget_password_screen.dart';
 import 'package:flutter/material.dart';
-
-import 'background_decoration.dart';
-import 'constants.dart';
-import 'custom_button.dart';
-import 'custom_text_form_field.dart';
+import '../components/background_decoration.dart';
+import '../components/custom_button.dart';
+import '../components/custom_text_form_field.dart';
+import '../constants.dart';
 
 class LogInScreen extends StatelessWidget {
   const LogInScreen({super.key});
@@ -36,9 +34,18 @@ class LogInScreen extends StatelessWidget {
             SizedBox(height: 16.0),
             CustomTextFormField(label: "Email"),
             SizedBox(height: 8.0),
-            CustomTextFormField(label: "Password"),
-            SizedBox(height: 8.0),
+            CustomTextFormField(label: "Password",isPassword: true,),
+            Align(
+              alignment: Alignment.centerRight,
+              child: TextButton(onPressed: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=> ForgetPasswordScreen()));
+              }, child: Text("Forget Password?",
+              style: TextStyle(
+                color: kDarkColor2
+              ),
 
+              )),
+            ),
             Hero(
                 tag: "logIn",child: CustomButton(title: "Log In",
             width: 200,
