@@ -1,3 +1,4 @@
+import 'package:chat_first/components/loading_screen.dart';
 import 'package:chat_first/screens/chat_screen.dart';
 import 'package:chat_first/screens/forget_password_screen.dart';
 import 'package:flutter/material.dart';
@@ -6,12 +7,34 @@ import '../components/custom_button.dart';
 import '../components/custom_text_form_field.dart';
 import '../constants.dart';
 
-class LogInScreen extends StatelessWidget {
+class LogInScreen extends StatefulWidget {
   const LogInScreen({super.key});
 
   @override
+  State<LogInScreen> createState() => _LogInScreenState();
+}
+
+class _LogInScreenState extends State<LogInScreen> {
+  @override
+  void initState() {
+    print("********************************************");
+    print("initState Triggered");
+    print("********************************************");
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    print("********************************************");
+    print("dispose Triggered");
+    print("********************************************");
+    super.dispose();
+  }
+
+  bool isLoading = false;
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return isLoading ? LoadingScreen() : Scaffold(
       body: BackgroundDecoration(
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -50,7 +73,17 @@ class LogInScreen extends StatelessWidget {
             Hero(
                 tag: "logIn",child: CustomButton(title: "Log In",
             onPressed: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>ChatScreen()));
+              setState(() {
+                isLoading = true;
+              });
+              Future.delayed(Duration(seconds: 5),() {
+                setState(() {
+                  isLoading = false;
+                });
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>ChatScreen()));
+
+              },);
+
             },
             width: 200,
 

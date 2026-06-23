@@ -13,7 +13,6 @@ class ForgetPasswordScreen extends StatefulWidget {
 
 class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
 bool isClicked = false;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
