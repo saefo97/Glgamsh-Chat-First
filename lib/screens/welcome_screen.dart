@@ -1,9 +1,9 @@
-import 'package:chat_first/components/background_decoration.dart';
-import 'package:chat_first/screens/log_in_screen.dart';
 import 'package:chat_first/screens/sign_up_screen.dart';
 import 'package:flutter/material.dart';
+import '../components/background_decoration.dart';
 import '../components/custom_button.dart';
-import '../constants.dart';
+import '../constans.dart';
+import 'log_in_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -11,64 +11,55 @@ class WelcomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BackgroundDecoration(child:
-      Column(
+      body: BackgroundDecoration(child: Column(
         mainAxisSize: MainAxisSize.min,
-
         children: [
-        //  Image.network("https://kitchen.sayidaty.net/uploads/small/f4/f4dd06616700c8a35cda336664339134_w750_h500.jpg"),
-          Hero(
-            tag: "logo",
-            child: Image.asset("assets/images/logo.png",
-              height: 175,
-
-            ),
-          ),
           // CircleAvatar(
           //   radius: 65,
           //   backgroundColor: Colors.green,
           //   child: CircleAvatar(
           //     radius: 60,
           //     backgroundImage: NetworkImage("https://kitchen.sayidaty.net/uploads/small/f4/f4dd06616700c8a35cda336664339134_w750_h500.jpg"),
-          //
           //   ),
           // ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 12),
-            child: Text("Welcome to Our Chat App!",
-              style: TextStyle(fontSize: 30, color: kMainColor),
+      //    Image.network("https://kitchen.sayidaty.net/uploads/small/f4/f4dd06616700c8a35cda336664339134_w750_h500.jpg"),
+          Hero(
+            tag: 'logo',
+           child: Image.asset("assets/images/logo.png",
+           height: 150,
+           ),
+         ),
+          SizedBox(height: 12,),
 
-            ),
+          Text("Welcome to Our Chat App!",
+            style: TextStyle(color:kMainColor, fontSize: 30),
+
           ),
-
+          SizedBox(height: 12,),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Hero(
-                tag: "logIn",
+                tag: 'logIn',
                 child: CustomButton(title: "Log In",
                 onPressed: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>LogInScreen()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=> LogInScreen()));
+
                 },
 
                 ),
               ),
               Hero(
-                tag: "signUp",
-                child: CustomButton(title: "Sign Up",
-                onPressed: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>SignUpScreen()));
-                },
-
-
+                tag: 'signUp',                child: CustomButton(title: "Sign Up",
+                  onPressed: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=> SignUpScreen()));
+                  },
                 ),
               ),
-
             ],
           )
         ],
-      )
-      ),
+      )),
     );
   }
 }

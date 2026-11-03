@@ -1,35 +1,31 @@
 import 'package:flutter/material.dart';
-
-import '../constants.dart';
-
+import '../constans.dart';
 
 class CustomButton extends StatelessWidget {
   final String title;
   final void Function()? onPressed;
-  final double? width;
-  const CustomButton({
-    super.key, required this.title, this.onPressed, this.width = 150,
-  });
+  double? width;
+   CustomButton({super.key, required this.title, this.onPressed, this.width = 150});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: width,
       decoration: BoxDecoration(
-        gradient: title == "Log In"? kLightGradient : kDarkGradient,
-        borderRadius: BorderRadiusGeometry.circular(100),
+        gradient: title == "Log In" ? kLightGradient : kDarkGradient,
+
+        borderRadius: BorderRadius.circular(30),
       ),
       child: MaterialButton(
+        height: 64,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
         onPressed: onPressed,
-        //   color: Colors.transparent,
-        //  elevation: 0,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadiusGeometry.circular(100),
-        ),
-        height: 65,
         child: Text(
           title,
-          style: TextStyle(fontSize: 28.0, color: Colors.white),
+          style: TextStyle(color: Colors.white,
+              fontFamily: "times",
+
+              fontSize: 28.0),
         ),
       ),
     );

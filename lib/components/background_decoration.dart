@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import '../constants.dart';
-
+import '../constans.dart';
 
 class BackgroundDecoration extends StatelessWidget {
   final Widget child;
@@ -11,15 +10,15 @@ class BackgroundDecoration extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
+      width: MediaQuery.of(context).size.width,
       child: Stack(
         children: [
           Positioned(
             right: 0,
             child: Container(
-              width: MediaQuery.of(context).size.width * 0.55,
               height: MediaQuery.of(context).size.width * 0.55,
+              width: MediaQuery.of(context).size.width * 0.55,
               decoration: BoxDecoration(
                 boxShadow: [
                   BoxShadow(
@@ -36,8 +35,8 @@ class BackgroundDecoration extends StatelessWidget {
             ),
           ),
           Container(
-            width: MediaQuery.of(context).size.width * 0.75,
             height: MediaQuery.of(context).size.width * 0.75,
+            width: MediaQuery.of(context).size.width * 0.75,
             decoration: BoxDecoration(
               boxShadow: [
                 BoxShadow(
@@ -46,8 +45,7 @@ class BackgroundDecoration extends StatelessWidget {
                   blurRadius: 10,
                 ),
               ],
-              gradient: kLightGradient,
-
+              gradient:kLightGradient,
               borderRadius: BorderRadius.only(
                 bottomRight: Radius.circular(360),
               ),
@@ -55,12 +53,11 @@ class BackgroundDecoration extends StatelessWidget {
           ),
           Positioned(
             left: 50,
-            bottom: 120,
+            bottom: 100,
             child: Container(
-              width: 100,
               height: 100,
+              width: 100,
               decoration: BoxDecoration(
-                shape: BoxShape.circle,
                 boxShadow: [
                   BoxShadow(
                     color: Colors.black45,
@@ -69,21 +66,22 @@ class BackgroundDecoration extends StatelessWidget {
                   ),
                 ],
                 gradient: kDarkGradient,
+                shape: BoxShape.circle,
               ),
             ),
           ),
           Positioned(
-            right: 40,
+            right: 60,
             bottom: 240,
             child: Container(
-              width: 50,
               height: 50,
+              width: 50,
               decoration: BoxDecoration(
                 boxShadow: [
                   BoxShadow(
                     color: Colors.black45,
-                    spreadRadius: 2,
-                    blurRadius: 10,
+                    spreadRadius: 3,
+                    blurRadius: 4,
                   ),
                 ],
                 gradient: kLightGradient,
@@ -92,7 +90,6 @@ class BackgroundDecoration extends StatelessWidget {
               ),
             ),
           ),
-
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Center(

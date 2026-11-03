@@ -1,24 +1,27 @@
-import 'package:chat_first/constants.dart';
 import 'package:flutter/material.dart';
+
+import '../constans.dart';
 
 class ChatScreen extends StatelessWidget {
   ChatScreen({super.key});
+
   bool isMe = false;
-  List<String> X = ["Hi", "Wenk", "?","BLOOOOCK"];
+
+  List<String> X = ["Hi", "Wenk", "?", "Block"];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // shape: BeveledRectangleBorder(
-        //   borderRadius: BorderRadiusGeometry.circular(50)
-        // ),
-        // leading: Icon(Icons.pedal_bike),
-        // actions: [
-        //   Icon(Icons.phone),Icon(Icons.video_call),Icon(Icons.more),
-        // ],
+        title: Text("Chat"),
         backgroundColor: kDarkColor1,
-        title: Text("Chat", style: TextStyle(color: Colors.white)),
         // centerTitle: true,
+        // actions: [
+        //   Icon(Icons.phone),
+        //   Icon(Icons.video_camera_front_rounded),
+        //   Icon(Icons.menu)
+        // ],
+        // leading: Icon(Icons.add),
       ),
       body: SafeArea(
         bottom: true,
@@ -26,12 +29,12 @@ class ChatScreen extends StatelessWidget {
           itemCount: X.length,
           itemBuilder: (context, index) {
             return Container(
+              margin: EdgeInsets.only(bottom: 8),
               alignment: isMe
                   ? AlignmentGeometry.centerRight
                   : Alignment.centerLeft,
-              margin: EdgeInsets.only(bottom: 8),
+        
               child: Container(
-                padding: EdgeInsets.all(8),
                 decoration: BoxDecoration(
                   color: isMe ? kLightColor1 : kDarkColor2,
                   borderRadius: isMe
@@ -46,11 +49,13 @@ class ChatScreen extends StatelessWidget {
                           topRight: Radius.circular(32),
                         ),
                 ),
+                padding: EdgeInsets.all(8),
                 child: Text(
                   X[index],
                   style: TextStyle(
-                    color: isMe ? Colors.black : Colors.white,
                     fontFamily: "times",
+                    color: isMe ? Colors.black : Colors.white,
+                    fontSize: 18,
                   ),
                 ),
               ),
@@ -59,7 +64,9 @@ class ChatScreen extends StatelessWidget {
           padding: EdgeInsets.all(8),
         ),
       ),
+
       bottomSheet: SafeArea(
+        bottom: true,
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Row(
@@ -69,7 +76,7 @@ class ChatScreen extends StatelessWidget {
                   minLines: 1,
                   maxLines: 5,
                   decoration: InputDecoration(
-                    hintText: "Type a message",
+                    hint: Text("Type a message"),
                     enabledBorder: InputBorder.none,
                     focusedBorder: InputBorder.none,
                   ),
@@ -77,7 +84,10 @@ class ChatScreen extends StatelessWidget {
               ),
               IconButton(
                 color: kDarkColor1,
-                onPressed: () {},
+
+                onPressed: () {
+
+                },
                 icon: Icon(Icons.send),
               ),
             ],

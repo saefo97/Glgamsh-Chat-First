@@ -1,11 +1,11 @@
-import 'package:chat_first/components/loading_screen.dart';
-import 'package:chat_first/screens/chat_screen.dart';
-import 'package:chat_first/screens/forget_password_screen.dart';
 import 'package:flutter/material.dart';
 import '../components/background_decoration.dart';
-import '../components/custom_button.dart';
 import '../components/custom_text_form_field.dart';
-import '../constants.dart';
+import '../components/loading_screen.dart';
+import '../constans.dart';
+import '../components/custom_button.dart';
+import 'chat_screen.dart';
+import 'forget_password_screen.dart';
 
 class LogInScreen extends StatefulWidget {
   const LogInScreen({super.key});
@@ -17,81 +17,105 @@ class LogInScreen extends StatefulWidget {
 class _LogInScreenState extends State<LogInScreen> {
   @override
   void initState() {
-    print("********************************************");
-    print("initState Triggered");
-    print("********************************************");
+    print("********************************************************");
+    print("init State Triggered");
+    print("********************************************************");
     super.initState();
   }
 
   @override
   void dispose() {
-    print("********************************************");
+    print("********************************************************");
     print("dispose Triggered");
-    print("********************************************");
+    print("********************************************************");
     super.dispose();
   }
 
   bool isLoading = false;
+
   @override
   Widget build(BuildContext context) {
-    return isLoading ? LoadingScreen() : Scaffold(
-      body: BackgroundDecoration(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Row(
-              children: [
-                Hero(
-                  tag: "logo",
-
-                  child: Image.asset("assets/images/logo.png",
-                    height: 90,
-
+    return isLoading
+        ? LoadingScreen()
+        : Scaffold(
+            body: BackgroundDecoration(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Row(
+                    children: [
+                      Hero(
+                        tag: 'logo',
+                        child: Image.asset(
+                          "assets/images/logo.png",
+                          height: 75,
+                        ),
+                      ),
+                      Text(
+                        "Log In",
+                        style: TextStyle(color: kMainColor, fontSize: 34),
+                      ),
+                    ],
                   ),
-                ),
-                Text(
-                  "Log In",
-                  style: TextStyle(fontSize: 30, color: kMainColor),
-                ),
-              ],
-            ),
-            SizedBox(height: 16.0),
-            CustomTextFormField(label: "Email"),
-            SizedBox(height: 8.0),
-            CustomTextFormField(label: "Password",isPassword: true,),
-            Align(
-              alignment: Alignment.centerRight,
-              child: TextButton(onPressed: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=> ForgetPasswordScreen()));
-              }, child: Text("Forget Password?",
-              style: TextStyle(
-                color: kDarkColor2
+                  SizedBox(height: 16.0),
+                  CustomTextFormField(label: "Email"),
+                  SizedBox(height: 8.0),
+                  CustomTextFormField(label: "Password", isPassword: true),
+                  Align(
+                    alignment: AlignmentGeometry.centerRight,
+                    child: TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ForgetPasswordScreen(),
+                          ),
+                        );
+                      },
+                      child: Text(
+                        "Forget Password?",
+
+                        style: TextStyle(color: kDarkColor2),
+                      ),
+                    ),
+                  ),
+                  //       GestureDetector(
+                  //
+                  //         onTap: (){
+                  //           print("Hello");
+                  // },
+                  //         child: Container(
+                  //           padding: EdgeInsets.all(8),
+                  //           child: Text("Log In"),
+                  //         ),
+                  //       ),
+                  Hero(
+                    tag: 'logIn',
+                    child: CustomButton(
+                      title: "Log In",
+
+                      width: 200,
+                      onPressed: () {
+                        setState(() {
+                          isLoading = true;
+                        });
+                        Future.delayed(Duration(seconds: 5), () {
+                          setState(() {
+                            isLoading = false;
+                          });
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ChatScreen(),
+                            ),
+                          );
+                        });
+                      },
+                    ),
+                  ),
+                ],
               ),
-
-              )),
             ),
-            Hero(
-                tag: "logIn",child: CustomButton(title: "Log In",
-            onPressed: (){
-              setState(() {
-                isLoading = true;
-              });
-              Future.delayed(Duration(seconds: 5),() {
-                setState(() {
-                  isLoading = false;
-                });
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>ChatScreen()));
-
-              },);
-
-            },
-            width: 200,
-
-            )),
-
-          ],
-        ),
-      ),
-    );
+          );
   }
 }
