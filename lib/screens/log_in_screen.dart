@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../components/background_decoration.dart';
 import '../components/custom_text_form_field.dart';
 import '../components/loading_screen.dart';
@@ -15,6 +16,9 @@ class LogInScreen extends StatefulWidget {
 }
 
 class _LogInScreenState extends State<LogInScreen> {
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
   @override
   void initState() {
     print("********************************************************");
@@ -58,9 +62,16 @@ class _LogInScreenState extends State<LogInScreen> {
                     ],
                   ),
                   SizedBox(height: 16.0),
-                  CustomTextFormField(label: "Email"),
+                  CustomTextFormField(
+                    label: "Email",
+                    controller: emailController,
+                  ),
                   SizedBox(height: 8.0),
-                  CustomTextFormField(label: "Password", isPassword: true),
+                  CustomTextFormField(
+                    label: "Password",
+                    controller: passwordController,
+                    isPassword: true,
+                  ),
                   Align(
                     alignment: AlignmentGeometry.centerRight,
                     child: TextButton(
@@ -68,7 +79,9 @@ class _LogInScreenState extends State<LogInScreen> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => ForgetPasswordScreen(),
+                            builder: (context) => ForgetPasswordScreen(
+                              email: emailController.text.trim(),
+                            ),
                           ),
                         );
                       },

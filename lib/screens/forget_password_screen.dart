@@ -4,7 +4,8 @@ import '../components/custom_text_form_field.dart';
 import '../constans.dart';
 
 class ForgetPasswordScreen extends StatefulWidget {
- const ForgetPasswordScreen({super.key});
+  final String email;
+ const ForgetPasswordScreen({super.key, required this.email});
 
   @override
   State<ForgetPasswordScreen> createState() => _ForgetPasswordScreenState();
@@ -12,6 +13,13 @@ class ForgetPasswordScreen extends StatefulWidget {
 
 class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
   bool isClicked = false;
+  late TextEditingController emailController;
+
+  @override
+  void initState() {
+    emailController = TextEditingController(text: widget.email);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +41,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
               ],
             ),
             SizedBox(height: 16.0),
-            CustomTextFormField(label: "Email"),
+            CustomTextFormField(label: "Email",controller: emailController,),
             SizedBox(height: 8.0),
             AnimatedContainer(
               duration: Duration(
