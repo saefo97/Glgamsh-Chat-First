@@ -1,5 +1,7 @@
+import 'package:chat_first/screens/welcome_screen.dart';
 import 'package:flutter/material.dart';
 
+import '../components/app_drawer.dart';
 import '../constans.dart';
 
 class ChatScreen extends StatelessWidget {
@@ -23,6 +25,7 @@ class ChatScreen extends StatelessWidget {
         // ],
         // leading: Icon(Icons.add),
       ),
+      endDrawer: AppDrawer(),
       body: SafeArea(
         bottom: true,
         child: ListView.builder(
@@ -94,6 +97,8 @@ class ChatScreen extends StatelessWidget {
           ),
         ),
       ),
+
     );
   }
 }
+

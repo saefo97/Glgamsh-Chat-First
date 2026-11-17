@@ -1,3 +1,5 @@
+import 'package:chat_first/authentication/auth_services.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../components/background_decoration.dart';
 import '../components/custom_text_form_field.dart';
@@ -5,7 +7,11 @@ import '../constans.dart';
 import '../components/custom_button.dart';
 
 class SignUpScreen extends StatelessWidget {
-  const SignUpScreen({super.key});
+   SignUpScreen({super.key});
+
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  TextEditingController confirmedPasswordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -27,11 +33,17 @@ class SignUpScreen extends StatelessWidget {
               ],
             ),
             SizedBox(height: 16.0),
-            CustomTextFormField(label: "Email"),
+            CustomTextFormField(label: "Email",
+            controller: emailController,
+            ),
             SizedBox(height: 8.0),
-            CustomTextFormField(label: "Password", isPassword: true),
+            CustomTextFormField(label: "Password", isPassword: true,
+            controller: passwordController,
+            ),
             SizedBox(height: 8.0),
-            CustomTextFormField(label: "Confirm Password", isPassword: true),
+            CustomTextFormField(label: "Confirm Password", isPassword: true,
+            controller: confirmedPasswordController,
+            ),
             SizedBox(height: 8.0),
             //       GestureDetector(
             //
@@ -47,7 +59,9 @@ class SignUpScreen extends StatelessWidget {
               tag: 'signUp',
               child: CustomButton(
                 title: "Sign Up",
-                onPressed: () {},
+                onPressed: () {
+                  AuthServices().signUp(emailController.text.trim(), passwordController.text.trim());
+                },
                 width: 200,
               ),
             ),
