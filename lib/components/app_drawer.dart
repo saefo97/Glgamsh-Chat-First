@@ -1,14 +1,18 @@
 
 
+import 'package:chat_first/authentication/auth_services.dart';
 import 'package:flutter/material.dart';
 
 import '../constans.dart';
 import '../screens/welcome_screen.dart';
 
 class AppDrawer extends StatelessWidget {
-  const new({
+   AppDrawer({
     super.key,
   });
+
+  AuthServices _authServices = AuthServices();
+
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +28,7 @@ class AppDrawer extends StatelessWidget {
           trailing: Icon(Icons.exit_to_app),
           iconColor: kDarkColor2,
           onTap: (){
+            _authServices.signOut();
             Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>WelcomeScreen()));
           },
         ),],

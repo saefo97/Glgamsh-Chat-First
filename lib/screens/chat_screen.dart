@@ -1,12 +1,32 @@
-import 'package:chat_first/screens/welcome_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../components/app_drawer.dart';
 import '../constans.dart';
 
-class ChatScreen extends StatelessWidget {
+class ChatScreen extends StatefulWidget {
   ChatScreen({super.key});
 
+  @override
+  State<ChatScreen> createState() => _ChatScreenState();
+}
+
+class _ChatScreenState extends State<ChatScreen> {
+  String userEmail = "";
+
+  getUserEmail(){
+    setState(() {
+      userEmail= FirebaseAuth.instance.currentUser!.email!;
+    });
+  }
+  
+  @override
+  void initState() {
+    getUserEmail();
+
+    super.initState();
+  }
+  
   bool isMe = false;
 
   List<String> X = ["Hi", "Wenk", "?", "Block"];
@@ -89,7 +109,7 @@ class ChatScreen extends StatelessWidget {
                 color: kDarkColor1,
 
                 onPressed: () {
-
+                  print(userEmail);
                 },
                 icon: Icon(Icons.send),
               ),
